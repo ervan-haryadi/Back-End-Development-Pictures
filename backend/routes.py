@@ -35,7 +35,8 @@ def count():
 ######################################################################
 @app.route("/picture", methods=["GET"])
 def get_pictures():
-    pass
+    if data:
+        return data, 200
 
 ######################################################################
 # GET A PICTURE
@@ -44,7 +45,11 @@ def get_pictures():
 
 @app.route("/picture/<int:id>", methods=["GET"])
 def get_picture_by_id(id):
-    pass
+    if data:
+        for image in data:
+            if image['id'] == id:
+                return image, 200
+        return {"msg": "No image found"}, 404
 
 
 ######################################################################
